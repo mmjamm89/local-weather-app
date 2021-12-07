@@ -11,8 +11,8 @@
         // and font size of the element itself, in the case of other properties like width. One em (1em) is equal
         // to the current font size. Each successive level of nesting get progressively larger.
         // rem - Relative to the font size of the root element.
-        height: 40rem;
-        width: 25rem;
+        height: 35rem;
+        width: 20rem;
         border: 1px solid black;
         border-radius: 1rem;
         display: grid;
@@ -26,6 +26,7 @@
         ". weather weather ."
         ". img img ."
         ". img img ."
+        ". btn btn ."
         ". btn btn .";
         .city{
             margin: 0;

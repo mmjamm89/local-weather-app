@@ -14,8 +14,8 @@
 }
 
 .App .content {
-  height: 40rem;
-  width: 25rem;
+  height: 35rem;
+  width: 20rem;
   border: 1px solid black;
   border-radius: 1rem;
   display: -ms-grid;
@@ -24,7 +24,7 @@
       grid-template-rows: repeat(10, 1fr);
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);
-      grid-template-areas: ". . . ." ". city city ." ". temp temp ." ". temp temp ." ". weather weather ." ". img img ." ". img img ." ". btn btn .";
+      grid-template-areas: ". . . ." ". city city ." ". temp temp ." ". temp temp ." ". weather weather ." ". img img ." ". img img ." ". btn btn ." ". btn btn .";
 }
 
 .App .content .city {
@@ -85,6 +85,7 @@
 
 .App .content .degree-changer {
   -ms-grid-row: 8;
+  -ms-grid-row-span: 2;
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
   grid-area: btn;

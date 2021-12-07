@@ -15,7 +15,7 @@ const Content = () => {
       <h1 className="temp">22</h1>
       <h3 className="current-weather">Cloudy</h3>
       <div className="current-img">
-        <i class="fas fa-cloud-moon-rain"></i>
+        <i class="fas fa-cloud-moon-rain" id="weather-img"></i>
       </div>
       <button className="degree-changer">C/F</button>
     </div>
