@@ -19,7 +19,7 @@
         grid-template-rows: repeat(10, 1fr);
         grid-template-columns: repeat(4, 1fr);
         grid-template-areas: 
-        ". . . ."
+        "input input input input"
         ". city city ."
         ". temp temp ."
         ". temp temp ."
@@ -28,11 +28,16 @@
         ". img img ."
         ". btn btn ."
         ". btn btn .";
+        .search{
+            grid-area: input;
+            border: 1px solid black;            
+            margin: auto;
+        }
         .city{
             margin: 0;
             padding: 0;
             grid-area: city;            
-            margin: auto;
+            margin: auto;            
         }
         .temp{
             grid-area: temp;

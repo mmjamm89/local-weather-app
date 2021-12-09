@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react';
-import axios from 'axios';
 import './styles/App.css';
 
 const api = {
@@ -7,46 +6,39 @@ const api = {
   base: "https://api.openweathermap.org/data/2.5/"
 }
 
-
-// const key = "";
-
-// const client = axios.create({
-//   baseURL: ""
-// });
-
 const App = () => {
 
-const [city, setCity] = useState('Buenos Aires');
-const [temp, setTemp] = useState(null);
+const [query, setQuery] = useState('');
 const [weather, setWeather] = useState(null);
-const [img, setImg] = useState(null)
-const [background, setBackground] = useState(null);
+const [city, setCity] = useState('');
 
-fetch(`${api.base}weather?q=${city}&units=metrics&APPID=${api.key}`)
+const search = (e) =>{
+  if(e.key === "Enter"){
+    fetch(`${api.base}weather?q=${query}&units=metrics&APPID=${api.key}`)
   .then(response => response.json())
-  .then(data => {
-    console.log(data)
-    setWeather('');
-    
-  })
-  
+  .then(data => { 
+    setWeather(data);
+    setQuery('');
+    setCity(query);
+    })
+  }
+}
 
-// useEffect(() => {
-//   client.get(key).then(response => {
-//     setTemp(response.data)
-//   })
-// }, [])
+console.log(weather);
 
   return (
     <div className="App">
-     <Content city={city}/>
-    </div>
-  );
-}
-
-const Content = ({city}) => {
-  return(
-    <div className="content">
+      <div className="content">
+      <div className="search">
+        <input 
+          type="text"
+          className="search-box"
+          placeholder='Search...'
+          onChange={e => setQuery(e.target.value)}
+          onKeyPress={search}
+          value={query}
+          />
+      </div>
       <h3 className="city">{city}</h3>
       <h1 className="temp">22</h1>
       <h3 className="current-weather">Cloudy</h3>
@@ -55,7 +47,8 @@ const Content = ({city}) => {
       </div>
       <button className="degree-changer">C/F</button>
     </div>
-  )
+    </div>
+  );
 }
 
 export default App;

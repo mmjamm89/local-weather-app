@@ -24,7 +24,16 @@
       grid-template-rows: repeat(10, 1fr);
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);
-      grid-template-areas: ". . . ." ". city city ." ". temp temp ." ". temp temp ." ". weather weather ." ". img img ." ". img img ." ". btn btn ." ". btn btn .";
+      grid-template-areas: "input input input input" ". city city ." ". temp temp ." ". temp temp ." ". weather weather ." ". img img ." ". img img ." ". btn btn ." ". btn btn .";
+}
+
+.App .content .search {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
+  grid-area: input;
+  border: 1px solid black;
+  margin: auto;
 }
 
 .App .content .city {
