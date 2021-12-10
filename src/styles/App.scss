@@ -6,71 +6,75 @@
     align-items: center;
     justify-content: center;
     .content{
-        // Relative length units - These are relative to something else.
-        // em - Relative to font size of the parent, in the case of typohgraphical properties like font-size,
-        // and font size of the element itself, in the case of other properties like width. One em (1em) is equal
-        // to the current font size. Each successive level of nesting get progressively larger.
-        // rem - Relative to the font size of the root element.
         height: 35rem;
-        width: 20rem;
-        border: 1px solid black;
-        border-radius: 1rem;
-        display: grid;
-        grid-template-rows: repeat(10, 1fr);
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-areas: 
-        "input input input input"
-        ". city city ."
-        ". temp temp ."
-        ". temp temp ."
-        ". weather weather ."
-        ". img img ."
-        ". img img ."
-        ". btn btn ."
-        ". btn btn .";
-        .search{
-            grid-area: input;
-            border: 1px solid black;            
-            margin: auto;
-        }
-        .city{
-            margin: 0;
-            padding: 0;
-            grid-area: city;            
-            margin: auto;            
-        }
-        .temp{
-            grid-area: temp;
-            margin: 0;
-            padding: 0;
-            margin: auto;
-            font-size: 8rem;
-            line-height: 1;
-        }
-        .current-weather{
-            grid-area: weather;
-            margin: 0;
-            padding: 0;
-            margin: auto;
-        }
-        .current-img{
-            grid-area: img;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            i{
-                font-size: 7.5rem;
+            width: 20rem;
+            border: 1px solid black;
+            border-radius: 1rem;
+            display: grid;
+            grid-template-rows: repeat(10, 1fr);
+            grid-template-columns: 1fr;
+            grid-template-areas: 
+            "input"
+            "data"
+            "data"
+            "data"
+            "data"
+            "data"
+            "data"
+            "data"
+            "data"
+            "data";           
+            .search{
+                grid-area: input;
+                border: 1px solid black;            
+                margin: auto;
             }
-        }
-        .degree-changer{
-            grid-area: btn;
-            margin: 0;
-            padding: 0;
-            margin: auto;
-            width: 4.5rem;
-            height: 1.5rem;
-        }
+            .data{
+                grid-area: data;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(8, 1fr);
+                grid-template-areas:
+                    ". city city ."
+                    "temp temp temp temp"
+                    "temp temp temp temp"
+                    ". weather weather ."
+                    ". img img ."
+                    ". img img ."
+                    ;
+
+                .city{
+                    margin: 0;
+                    padding: 0;
+                    grid-area: city;            
+                    margin: auto;
+                }
+                .temp{
+                    grid-area: temp;
+                    margin: 0;
+                    padding: 0;
+                    margin: auto;
+                    font-size: 8rem;
+                    line-height: 1;
+                }
+                .current-weather{
+                    grid-area: weather;
+                    margin: 0;
+                    padding: 0;
+                    margin: auto;
+                }
+                .current-img{
+                    grid-area: img;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    i{
+                        font-size: 7.5rem;
+                    }
+                }
+            }
     }
 }
+

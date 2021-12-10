@@ -22,35 +22,48 @@
   display: grid;
   -ms-grid-rows: (1fr)[10];
       grid-template-rows: repeat(10, 1fr);
-  -ms-grid-columns: (1fr)[4];
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-areas: "input input input input" ". city city ." ". temp temp ." ". temp temp ." ". weather weather ." ". img img ." ". img img ." ". btn btn ." ". btn btn .";
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+      grid-template-areas: "input" "data" "data" "data" "data" "data" "data" "data" "data" "data";
 }
 
 .App .content .search {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
-  -ms-grid-column-span: 4;
   grid-area: input;
   border: 1px solid black;
   margin: auto;
 }
 
-.App .content .city {
+.App .content .data {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 9;
+  -ms-grid-column: 1;
+  grid-area: data;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: (1fr)[8];
+      grid-template-rows: repeat(8, 1fr);
+      grid-template-areas: ". city city ." "temp temp temp temp" "temp temp temp temp" ". weather weather ." ". img img ." ". img img .";
+}
+
+.App .content .data .city {
   margin: 0;
   padding: 0;
-  -ms-grid-row: 2;
+  -ms-grid-row: 1;
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
   grid-area: city;
   margin: auto;
 }
 
-.App .content .temp {
-  -ms-grid-row: 3;
+.App .content .data .temp {
+  -ms-grid-row: 2;
   -ms-grid-row-span: 2;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
   grid-area: temp;
   margin: 0;
   padding: 0;
@@ -59,8 +72,8 @@
   line-height: 1;
 }
 
-.App .content .current-weather {
-  -ms-grid-row: 5;
+.App .content .data .current-weather {
+  -ms-grid-row: 4;
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
   grid-area: weather;
@@ -69,8 +82,8 @@
   margin: auto;
 }
 
-.App .content .current-img {
-  -ms-grid-row: 6;
+.App .content .data .current-img {
+  -ms-grid-row: 5;
   -ms-grid-row-span: 2;
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
@@ -88,20 +101,7 @@
           justify-content: center;
 }
 
-.App .content .current-img i {
+.App .content .data .current-img i {
   font-size: 7.5rem;
-}
-
-.App .content .degree-changer {
-  -ms-grid-row: 8;
-  -ms-grid-row-span: 2;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 2;
-  grid-area: btn;
-  margin: 0;
-  padding: 0;
-  margin: auto;
-  width: 4.5rem;
-  height: 1.5rem;
 }
 /*# sourceMappingURL=App.css.map */

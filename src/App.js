@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import './styles/App.css';
 
 const api = {
@@ -6,47 +6,54 @@ const api = {
   base: "https://api.openweathermap.org/data/2.5/"
 }
 
-const App = () => {
+function App() {
+  const [query, setQuery] = useState('');
+  const [weather, setWeather] = useState({});
 
-const [query, setQuery] = useState('');
-const [weather, setWeather] = useState(null);
-const [city, setCity] = useState('');
-
-const search = (e) =>{
-  if(e.key === "Enter"){
-    fetch(`${api.base}weather?q=${query}&units=metrics&APPID=${api.key}`)
-  .then(response => response.json())
-  .then(data => { 
-    setWeather(data);
-    setQuery('');
-    setCity(query);
-    })
+  const search = evt => {
+    if (evt.key === "Enter") {
+      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+        .then(res => res.json())
+        .then(result => {
+          setWeather(result);
+          setQuery('');
+          console.log(result);
+        });
+    }
   }
-}
 
-console.log(weather);
+  console.log(weather.main.temp)
 
   return (
-    <div className="App">
+    <div className={(typeof weather.main != "undefined")
+    ? ((weather.main.temp > 16)
+    ? 'App warm'
+    : 'App')
+    : 'App'}>
       <div className="content">
-      <div className="search">
-        <input 
-          type="text"
-          className="search-box"
-          placeholder='Search...'
-          onChange={e => setQuery(e.target.value)}
-          onKeyPress={search}
-          value={query}
+        <div className="search">
+          <input 
+            type="text"
+            className="search-box"
+            placeholder="Search..."
+            onChange={e => setQuery(e.target.value)}
+            value={query}
+            onKeyPress={search}
           />
+        </div>
+        {(typeof weather.main != "undefined") ? (
+        <div className="data">          
+            <h3 className="city">{weather.name}, {weather.sys.country}</h3>            
+            <h1 className="temp">
+              {Math.round(weather.main.temp)}°c
+            </h1>
+            <h3 className="current-weather">{weather.weather[0].main}</h3>
+            <div className="current-img">
+              <i className="fas fa-cloud-moon-rain" id="weather-img"></i>
+            </div>
+        </div>
+        ) : ('')}
       </div>
-      <h3 className="city">{city}</h3>
-      <h1 className="temp">22</h1>
-      <h3 className="current-weather">Cloudy</h3>
-      <div className="current-img">
-        <i className="fas fa-cloud-moon-rain" id="weather-img"></i>
-      </div>
-      <button className="degree-changer">C/F</button>
-    </div>
     </div>
   );
 }
