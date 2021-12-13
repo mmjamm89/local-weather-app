@@ -1,1 +1,3 @@
-#Local Weather App
+#Local Weather App for FreeCodeCamp 
+
+React, SASS - Using the openweathermap API.
